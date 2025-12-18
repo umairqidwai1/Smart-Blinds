@@ -1,0 +1,68 @@
+esphome:
+  name: blinds
+  friendly_name: Blinds
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: !secret api_encryption_key
+
+ota:
+  - platform: esphome
+    password: !secret ota_password
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Blinds Fallback Hotspot"
+    password: !secret ap_password
+
+captive_portal:
+
+output:
+  - platform: ledc
+    pin: GPIO22
+    frequency: 50 Hz
+    id: pwm_output
+
+# ✅ Basic servo definition (defaults used for min/idle/max)
+servo:
+  - id: blind_servo
+    output: pwm_output
+
+# ✅ Home Assistant cover for blinds 2
+cover:
+  - platform: template
+    name: "Blinds"
+    id: blinds_cover
+    device_class: blind
+    optimistic: true 
+
+    open_action:
+      - lambda: |-
+          id(blind_servo).write(-1.0);
+      - delay: 7s
+      - lambda: |-
+          id(blind_servo).write(0.0);
+      - lambda: |-
+          id(blind_servo).detach();
+
+    close_action:
+      - lambda: |-
+          id(blind_servo).write(1.0);
+      - delay: 6.5s
+      - lambda: |-
+          id(blind_servo).write(0.0);
+      - lambda: |-
+          id(blind_servo).detach();
