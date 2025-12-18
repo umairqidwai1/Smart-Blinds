@@ -16,16 +16,16 @@ Make normal string Blinds smart using an ESP32 and a Servo Motor
 
 - You will also need some wires, depending on how you plan to wire this (solder or pin connectors)
 
-# Step 1:
+### Step 1:
 - Connect the red wire from the servo to the VIN (5v) pin on the ESP
 - Connect the white wire to pin D1 on the ESP8266 or pin D22 on the ESP32 (These can be changed if you are willing to edit the code)
 - Connect the black wire to the GND (Ground) pin on the ESP
 
-# Step 2
+### Step 2
 - Flash the ESP with ESPhome using Homeassistant or https://web.esphome.io/
 - Use the file I have provided based on your board, you should only need the code after the line "captive_portal:", everything else should already be there, with your credentials
 
-# Step 3
+### Step 3
 - 3D print the spool.stl file, and attach it to the motor using hotglue or any other method you prefer
 - Use the reference image if confused
 - Attach everything close to your window, and spool the strings as shown in the final.png image.
