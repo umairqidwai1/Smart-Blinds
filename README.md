@@ -28,4 +28,4 @@ Make normal string Blinds smart using an ESP32 and a Servo Motor
 ### Step 3
 - 3D print the spool.stl file, and attach it to the motor using hotglue or any other method you prefer
 - Use the reference image if confused
-- Attach everything close to your window, and spool the strings as shown in the final.png image.
+- Attach everything close to your window, and spool the strings as shown in the IMG_01.jpeg and IMG_02.jpeg.
